@@ -12,8 +12,11 @@ const usersRouter = require('./routes/users');
 
 const app = express();
 
+// Tell the server file about the .env file
+require('dotenv').config();
+
 // connect database
-mongoose.connect('mongodb+srv://first-Express-App:AlQEPL9Y5mXPXP6I@cluster.ph5td.mongodb.net/?retryWrites=true&w=majority',
+mongoose.connect(process.env.MONGO_URI,
     { useNewUrlParser: true,
       useUnifiedTopology: true })
     .then(() => console.log('Successfully connected to MongoDB !'))
